@@ -4,39 +4,71 @@
 		
 		<style type="text/css">	
 			
+			
 			#wrapper{
 				width:960px;
-				/*margin:0px auto 0px auto;*/
 				margin:0 auto;
+								
 			}
 			
-			#header{
-				height:150px;
-				border:1px solid #ccc;
+			#header #logo{
+				height:100px;
+				background:url("logo.jpg");
+			}
+			
+			#header #logo h1{			
+				padding-top:30px;
+				color:#B10814;
+				margin-left: 15px;
+			}
+			
+			#header #nav{			
+				height:30px;
+				line-height:30px;
+				padding:10px;				
+				background:#900; 							
+			}
+			
+			a {
+				color: #fff; /* white color*/
+				margin:0px 10px;
+				text-decoration:none;				
+				text-transform:uppercase;
+			}
+			
+			a:hover {
+				text-transform:uppercase;
+				color:#FF8C8C;
 			}
 			
 			#left_sidebar{
-				width:150px;
+				width:200px;
 				float:left;
-				border:1px solid #ccc;
+				
 			}
 			
 			#content_area{
-				width:800px;
+				width:700px;
 				float:left;
-				border:1px solid #ccc;
+				margin-left:20px;
+				
 			}
 			
 			#footer{
 				height:100px;
-				border:1px solid #ccc;
+				text-align:center;
+				border-top:1px solid #ccc;
+				margin-top:10px;
+				
 			}
 			
 			
 			.content_box{
-				width:220px;
+				width:200px;
 				padding:10px;
 				float:left;				
+				border:1px solid #ccc;
+				margin-right:10px;
 			}
 			
 			
@@ -45,17 +77,33 @@
 				clear:both;
 			}
 			
+			.bg_red{			
+				background:#ED8282; 			
+			}
+			
+			.bg_green{
+			
+				background:#9FED82; 
+			}
+			
+			.bg_blue{
+				background:#B2BAE8; 
+			}
+			
+			
 		</style>		
 	</head>
 		
 	<body>
 	
-	<div id="#wrapper">
+	<div id="wrapper">
 	
 		<div id="header">
 		
-			<h3>Lorem Ipsum</h3>
-
+			<div id="logo">
+				<h1>Bernhardt Website</h1>
+			</div>
+			
 			<div id="nav">	
 				<a href="">Home</a>
 				<a href="">About</a>
@@ -90,7 +138,17 @@
 				
 				<div id="content_area">
 				
-						<h4>Welcome</h4>
+						<h2>Welcome</h2>
+						
+						<p>
+							Lorem ipsum dolar sit amet ipsum dolar sit amet
+							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
+							ipsum dolar. Ipsum dolar sit amet ipsum. Lorem ipsum dolar sit amet ipsum dolar sit amet
+							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
+							ipsum dolar. 						
+							
+						</p>
+						
 						<p>
 							Lorem ipsum dolar sit amet ipsum dolar sit amet
 							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
@@ -98,7 +156,7 @@
 							
 						</p>
 						
-						<div class="content_box">						
+						<div class="content_box bg_red">						
 							<p>
 								Lorem ipsum dolar sit amet ipsum dolar sit amet
 								ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
@@ -107,7 +165,7 @@
 							</p>
 						</div>
 						
-						<div class="content_box">						
+						<div class="content_box bg_green">						
 							<p>
 								Lorem ipsum dolar sit amet ipsum dolar sit amet
 								ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
@@ -116,7 +174,7 @@
 							</p>
 						</div>
 						
-						<div class="content_box">						
+						<div class="content_box bg_blue">						
 							<p>
 								Lorem ipsum dolar sit amet ipsum dolar sit amet
 								ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
