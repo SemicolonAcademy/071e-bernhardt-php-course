@@ -16,37 +16,27 @@
 				<h1>Bernhardt Website</h1>
 			</div>
 			
+			<!-- nav -->
+						
 			<div id="nav">	
-				<a href="layout.html">Home</a>
-				<a href="about.html">About</a>
-				<a href="services.html">Services</a>
-				<a href="portfolio.html">Portfolio</a>
-				<a href="contact.html">Contact Us</a>			
+				<?php
+					include "nav_inc.php";
+			
+				?>		
 			</div>
+			
+			
 			
 		</div>
 		
 		<div id="content-wrapper">
 				
 				<div id="left_sidebar">				
-					<div class="left_box">
-						<h4>Quick Links</h4>
-						<p>
-							Lorem ipsum dolar sit amet ipsum dolar sit amet
-							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-							ipsum dolar. Ipsum dolar sit amet ipsum.		
-							
-						</p>
-					</div>
-					<div class="left_box">
-						<h4>Our Address</h4>
-						<p>
-							Lorem ipsum dolar sit amet ipsum dolar sit amet
-							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-							ipsum dolar. Ipsum dolar sit amet ipsum.						
-							
-						</p>
-					</div>
+				
+					<?php
+						include "left_inc.php";
+					?>
+					
 				</div> <!-- left_sidebar end -->
 				
 				<div id="content_area">
@@ -105,9 +95,7 @@
 		<div class="clear"></div>
 		
 		<div id="footer">
-			<p>
-				&copy; 2014. All Rights Reserved.
-			</p>
+			<?php include "footer_inc.php"; ?>
 		</div>
 		
 	
