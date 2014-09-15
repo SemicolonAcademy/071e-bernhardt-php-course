@@ -1,18 +1,3 @@
-<?php
-
-//1. Connecti to MySQL server
-mysql_connect('localhost', 'root', '');    
-
-//2. Selecting database
-mysql_select_db('bernhardt');
-
-//3. Performing SQL query
-$query = "SELECT * FROM users";
-$result = mysql_query($query); //resource or similar to file handle
-
-?>
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -76,16 +61,11 @@ $result = mysql_query($query); //resource or similar to file handle
 			<th>Action</th>
 		</tr>
 		
-<?php
-//4. Display results
-$i=1;
-while ($row = mysql_fetch_assoc($result)) { ?>
-
 		<tr>
-			<td><?php echo $i;?></td>
-			<td><?php echo $row['email'];?></td>
-			<td><?php echo $row['full_name'];?></td>
-			<td><?php echo date("Y/m/d", $row['created_at']);?></td>
+			<td>1</td>
+			<td>ram@gmail.com</td>
+			<td>Ram Thapa</td>
+			<td>2014 Sept 14</td>
 			
 			<td>
 				<a href="">Edit</a>
@@ -94,9 +74,86 @@ while ($row = mysql_fetch_assoc($result)) { ?>
 			</td>
 		</tr>	
 
-<?php $i++; } ?>
+<tr>
+			<td>1</td>
+			<td>ram@gmail.com</td>
+			<td>Ram Thapa</td>
+			<td>2014 Sept 14</td>
+			
+			<td>
+				<a href="">Edit</a>
+				/ 
+				<a href="">Delete</a>
+			</td>
+		</tr>	
+
+<tr>
+			<td>1</td>
+			<td>ram@gmail.com</td>
+			<td>Ram Thapa</td>
+			<td>2014 Sept 14</td>
+			
+			<td>
+				<a href="">Edit</a>
+				/ 
+				<a href="">Delete</a>
+			</td>
+		</tr>	
 
 
+<tr>
+			<td>1</td>
+			<td>ram@gmail.com</td>
+			<td>Ram Thapa</td>
+			<td>2014 Sept 14</td>
+			
+			<td>
+				<a href="">Edit</a>
+				/ 
+				<a href="">Delete</a>
+			</td>
+		</tr>	
+
+<tr>
+			<td>1</td>
+			<td>ram@gmail.com</td>
+			<td>Ram Thapa</td>
+			<td>2014 Sept 14</td>
+			
+			<td>
+				<a href="">Edit</a>
+				/ 
+				<a href="">Delete</a>
+			</td>
+		</tr>	
+
+<tr>
+			<td>1</td>
+			<td>ram@gmail.com</td>
+			<td>Ram Thapa</td>
+			<td>2014 Sept 14</td>
+			
+			<td>
+				<a href="">Edit</a>
+				/ 
+				<a href="">Delete</a>
+			</td>
+		</tr>	
+
+<tr>
+			<td>1</td>
+			<td>ram@gmail.com</td>
+			<td>Ram Thapa</td>
+			<td>2014 Sept 14</td>
+			
+			<td>
+				<a href="">Edit</a>
+				/ 
+				<a href="">Delete</a>
+			</td>
+		</tr>			
+		</tr>			
+		</tr>			
 		
 	</table>
 
@@ -143,8 +200,3 @@ while ($row = mysql_fetch_assoc($result)) { ?>
     
   </body>
 </html>
-
-<?
-//5. Close connection
-mysql_close();
-?> 
