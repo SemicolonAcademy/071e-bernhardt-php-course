@@ -66,9 +66,11 @@ $result = mysql_query($query); //resource or similar to file handle
 	  
 	<br/>
 
+	<?php if (mysql_num_rows($result) > 0 ) { ?>
+	
 	<table class="table table-hover">
 
-		<tr>
+		<tr id="tablerow">
 			<th>SN.</th>
 			<th>Email</th>
 			<th>Full Name</th>
@@ -90,7 +92,7 @@ while ($row = mysql_fetch_assoc($result)) { ?>
 			<td>
 				<a href="">Edit</a>
 				/ 
-				<a href="">Delete</a>
+				<a href="db.php?action=user_delete&id=<?php echo $row['id']; ?>">Delete</a>
 			</td>
 		</tr>	
 
@@ -100,9 +102,11 @@ while ($row = mysql_fetch_assoc($result)) { ?>
 		
 	</table>
 
+<?php } ?>
+	
 	<h4>Add User</h4><br/>
 	
-	<form method="" action="">
+	<form method="POST" action="db.php">
             
 			<div class="control-group">
               <label class="control-label" >Email</label>
@@ -130,7 +134,7 @@ while ($row = mysql_fetch_assoc($result)) { ?>
 			
 			<div class="control-group">
               <div class="controls">                
-                <button type="submit" class="btn btn-info">Save</button>
+                <button name="btn_adduser" value="add_user" type="submit" class="btn btn-info">Save</button>
               </div>
             </div>
 			
