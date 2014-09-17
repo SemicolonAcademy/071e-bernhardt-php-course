@@ -7,7 +7,7 @@ mysql_connect('localhost', 'root', '');
 mysql_select_db('bernhardt');
 
 //3. Performing SQL query
-$query = "SELECT * FROM users";
+$query = "SELECT * FROM news";
 $result = mysql_query($query); //resource or similar to file handle
 
 ?>
@@ -38,12 +38,11 @@ $result = mysql_query($query); //resource or similar to file handle
 	
     <div class="container">
 
-    <h1>Users</h1>
+    <h1>News</h1>
     
 	<p>
-		Users Administration
-		&nbsp;&nbsp;&nbsp;
-		<a href=""><i class="icon-plus"></i> Add User</a>		
+		News Administration
+		&nbsp;&nbsp;&nbsp;		
 	</p>
 	  
 	<br/>
@@ -54,9 +53,8 @@ $result = mysql_query($query); //resource or similar to file handle
 
 		<tr id="tablerow">
 			<th>SN.</th>
-			<th>Email</th>
-			<th>Full Name</th>
-			<th>Status</th>
+			<th>Title</th>
+			<th>Content</th>			
 			<th>Created At</th>			
 			<th>Action</th>
 		</tr>
@@ -68,23 +66,18 @@ while ($row = mysql_fetch_assoc($result)) { ?>
 
 		<tr>
 			<td><?php echo $i;?></td>
-			<td><?php echo $row['email'];?></td>
-			<td><?php echo $row['full_name'];?></td>
-			<td>
-				<?php if ( $row['status'] == "active" ) { ;?>
-					<span class="label label-success">Active</span>
-				<?php } else { ;?>
-					<span class="label label-important">Inactive</span>
-				<?php } ;?>
+			<td><?php echo $row['title'];?></td>
+			<td class="span4">
+				<?php echo substr($row['content'],0,100);?>
 			</td>
 			
 			
 			<td><?php echo date("Y/m/d", $row['created_at']);?></td>
 			
 			<td>
-				<a href="user_edit.php?id=<?php echo $row['id']; ?>">Edit</a>
+				<a href="news_edit.php?id=<?php echo $row['id']; ?>">Edit</a>
 				/ 
-				<a href="db.php?action=user_delete&id=<?php echo $row['id']; ?>">Delete</a>
+				<a href="db.php?action=news_delete&id=<?php echo $row['id']; ?>">Delete</a>
 			</td>
 		</tr>	
 
@@ -96,47 +89,29 @@ while ($row = mysql_fetch_assoc($result)) { ?>
 
 <?php } ?>
 	
-	<h4>Add User</h4><br/>
+	<h4>Add News</h4><br/>
 	
 	<form method="POST" action="db.php">
             
 			<div class="control-group">
-              <label class="control-label" >Email</label>
+              <label class="control-label" >Title</label>
               <div class="controls">
-                <input name="email" type="text" placeholder="Email"/>
+                <input name="title" type="text" placeholder="News Title"/>
               </div>
             </div>
 			
 			
 			
             <div class="control-group">
-              <label class="control-label" >Password</label>
+              <label class="control-label" >Content</label>
               <div class="controls">
-                <input name="password" type="password" placeholder="Password">
+                <textarea name="content" rows="10" class="span6"></textarea>
               </div>
             </div>
             
 			<div class="control-group">
-              <label class="control-label">Full Name</label>
-              <div class="controls">
-                <input name="full_name" type="text" placeholder="Full Name">
-              </div>
-            </div>
-			
-			<div class="control-group">
-              <label class="control-label">Status</label>
-              <div class="controls">
-                <select name="status">
-					<option value="active">Active</option>
-					<option value="inactive">Inavtice</option>
-				</select>
-              </div>
-            </div>
-			
-			
-			<div class="control-group">
               <div class="controls">                
-                <button name="btn_adduser" value="add_user" type="submit" class="btn btn-info">Save</button>
+                <button name="btn_action" value="add_news" type="submit" class="btn btn-info">Save</button>
               </div>
             </div>
 			

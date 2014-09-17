@@ -38,10 +38,10 @@ $result = mysql_query($query); //resource or similar to file handle
 	
     <div class="container">
 
-    <h1>Users</h1>
+    <h1>Pages</h1>
     
 	<p>
-		Users Administration
+		Pages Administration
 		&nbsp;&nbsp;&nbsp;
 		<a href=""><i class="icon-plus"></i> Add User</a>		
 	</p>
