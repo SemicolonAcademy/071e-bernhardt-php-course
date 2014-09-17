@@ -7,8 +7,11 @@ mysql_connect('localhost', 'root', '');
 mysql_select_db('bernhardt');
 
 //3. Performing SQL query
-$query = "SELECT * FROM users";
+$id = $_GET['id'];
+$query = "SELECT * FROM users where id=$id";
 $result = mysql_query($query); //resource or similar to file handle
+$user = mysql_fetch_assoc($result);
+//print_r($user);
 
 ?>
 
@@ -33,77 +36,21 @@ $result = mysql_query($query); //resource or similar to file handle
   </head>
 
   <body>
-
-    <?php include "nav.php";?>
+	
+	<?php include "nav.php";?>
 	
     <div class="container">
 
-    <h1>Users</h1>
+    <h1>Edit Users</h1>
     
-	<p>
-		Users Administration
-		&nbsp;&nbsp;&nbsp;
-		<a href=""><i class="icon-plus"></i> Add User</a>		
-	</p>
-	  
 	<br/>
 
-	<?php if (mysql_num_rows($result) > 0 ) { ?>
-	
-	<table class="table table-hover">
-
-		<tr id="tablerow">
-			<th>SN.</th>
-			<th>Email</th>
-			<th>Full Name</th>
-			<th>Status</th>
-			<th>Created At</th>			
-			<th>Action</th>
-		</tr>
-		
-<?php
-//4. Display results
-$i=1;
-while ($row = mysql_fetch_assoc($result)) { ?>
-
-		<tr>
-			<td><?php echo $i;?></td>
-			<td><?php echo $row['email'];?></td>
-			<td><?php echo $row['full_name'];?></td>
-			<td>
-				<?php if ( $row['status'] == "active" ) { ;?>
-					<span class="label label-success">Active</span>
-				<?php } else { ;?>
-					<span class="label label-important">Inactive</span>
-				<?php } ;?>
-			</td>
-			
-			
-			<td><?php echo date("Y/m/d", $row['created_at']);?></td>
-			
-			<td>
-				<a href="user_edit.php?id=<?php echo $row['id']; ?>">Edit</a>
-				/ 
-				<a href="db.php?action=user_delete&id=<?php echo $row['id']; ?>">Delete</a>
-			</td>
-		</tr>	
-
-<?php $i++; } ?>
-
-
-		
-	</table>
-
-<?php } ?>
-	
-	<h4>Add User</h4><br/>
-	
-	<form method="POST" action="db.php">
+	<form method="POST" action="db.php?user_id=<?php echo $id;?>">
             
 			<div class="control-group">
               <label class="control-label" >Email</label>
               <div class="controls">
-                <input name="email" type="text" placeholder="Email"/>
+                <input name="email" value="<?php echo $user['email'];?>" type="text" placeholder="Email"/>
               </div>
             </div>
 			
@@ -119,7 +66,7 @@ while ($row = mysql_fetch_assoc($result)) { ?>
 			<div class="control-group">
               <label class="control-label">Full Name</label>
               <div class="controls">
-                <input name="full_name" type="text" placeholder="Full Name">
+                <input name="full_name" value="<?php echo $user['full_name'];?>" type="text" placeholder="Full Name">
               </div>
             </div>
 			
@@ -136,7 +83,7 @@ while ($row = mysql_fetch_assoc($result)) { ?>
 			
 			<div class="control-group">
               <div class="controls">                
-                <button name="btn_adduser" value="add_user" type="submit" class="btn btn-info">Save</button>
+                <button name="btn_action" value="update_user" type="submit" class="btn btn-info">Update</button>
               </div>
             </div>
 			
