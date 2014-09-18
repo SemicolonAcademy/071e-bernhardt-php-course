@@ -7,8 +7,11 @@ mysql_connect('localhost', 'root', '');
 mysql_select_db('bernhardt');
 
 //3. Performing SQL query
-$query = "SELECT * FROM pages";
+$id = $_GET['id'];
+$query = "SELECT * FROM pages where id=$id";
 $result = mysql_query($query); //resource or similar to file handle
+$pages = mysql_fetch_assoc($result);
+//print_r($user);
 
 ?>
 
@@ -33,70 +36,22 @@ $result = mysql_query($query); //resource or similar to file handle
   </head>
 
   <body>
-
-    <?php include "nav.php";?>
+	
+	<?php include "nav.php";?>
 	
     <div class="container">
 
-    <h1>Pages</h1>
+    <h1>Edit Pages</h1>
     
-	<p>
-		Pages Administration
-		&nbsp;&nbsp;&nbsp;		
-	</p>
-	  
 	<br/>
 
-	<?php if (mysql_num_rows($result) > 0 ) { ?>
 	
-	<table class="table table-hover">
-
-		<tr id="tablerow">
-			<th>SN.</th>
-			<th>Title</th>
-			<th>Content</th>			
-			<th>Created At</th>			
-			<th>Action</th>
-		</tr>
-		
-<?php
-//4. Display results
-$i=1;
-while ($row = mysql_fetch_assoc($result)) { ?>
-
-		<tr>
-			<td><?php echo $i;?></td>
-			<td><?php echo $row['title'];?></td>
-			<td class="span4">
-				<?php echo substr($row['content'],0,100);?>
-			</td>
-			
-			
-			<td><?php echo date("Y/m/d", $row['created_at']);?></td>
-			
-			<td>
-				<a href="pages_edit.php?id=<?php echo $row['id']; ?>">Edit</a>
-				/ 
-				<a href="db.php?action=pages_delete&id=<?php echo $row['id']; ?>">Delete</a>
-			</td>
-		</tr>	
-
-<?php $i++; } ?>
-
-
-		
-	</table>
-
-<?php } ?>
-	
-	<h4>Add Pages</h4><br/>
-	
-	<form method="POST" action="db.php">
+	<form method="POST" action="db.php?page_id=<?php echo $id;?>">
             
 			<div class="control-group">
               <label class="control-label" >Title</label>
               <div class="controls">
-                <input name="title" type="text" placeholder="Page Title"/>
+                <input name="title" value="<?php echo $pages['title'];?>" type="text" placeholder="Page Title"/>
               </div>
             </div>
 			
@@ -105,19 +60,17 @@ while ($row = mysql_fetch_assoc($result)) { ?>
             <div class="control-group">
               <label class="control-label" >Content</label>
               <div class="controls">
-                <textarea name="content" rows="10" class="span6"></textarea>
+                <textarea name="content" rows="10" class="span6"><?php echo $pages['content'];?></textarea>
               </div>
             </div>
             
 			<div class="control-group">
               <div class="controls">                
-                <button name="btn_action" value="add_pages" type="submit" class="btn btn-info">Save</button>
+                <button name="btn_action" value="update_pages" type="submit" class="btn btn-info">Update</button>
               </div>
             </div>
 			
 	</form>
-	
-	
 	
 	  
     </div> <!-- /container -->
