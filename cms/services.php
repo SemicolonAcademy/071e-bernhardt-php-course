@@ -1,6 +1,11 @@
+<?php 
+
+include_once "config.php";
+
+?>
 <html>
 	<head>	
-		<title>Lorem Ipsum Website</title>
+		<title><?php echo $setting['site_name'];?></title>
 		
 		<link href="styles.css"	rel="stylesheet" type="text/css" />
 		
@@ -13,7 +18,7 @@
 		<div id="header">
 		
 			<div id="logo">
-				<h1>Bernhardt Website</h1>
+				<h1><?php echo $setting['site_name'];?></h1>
 			</div>
 			
 			<div id="nav">	

@@ -1,6 +1,12 @@
+<?php 
+
+include_once "config.php";
+
+?>
+
 <html>
 	<head>	
-		<title>Lorem Ipsum Website</title>
+		<title><?php echo $setting['site_name'];?></title>
 		
 		<link href="styles.css"	rel="stylesheet" type="text/css" />
 		
@@ -13,7 +19,7 @@
 		<div id="header">
 		
 			<div id="logo">
-				<h1>Bernhardt Website</h1>
+				<h1><?php echo $setting['site_name'];?></h1>
 			</div>
 			
 			<!-- nav -->
@@ -41,23 +47,21 @@
 				
 				<div id="content_area">
 				
-						<h2>Welcome</h2>
+						<?php				
+						$id = 4;
+						//3. Performing SQL query
+						$page_query = "SELECT * FROM pages where `id` = $id";
+						$page_result = mysql_query($page_query); //resource or similar to file handle
+						$page_row = mysql_fetch_assoc($page_result);
+						?>
 						
-						<p>
-							Lorem ipsum dolar sit amet ipsum dolar sit amet
-							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-							ipsum dolar. Ipsum dolar sit amet ipsum. Lorem ipsum dolar sit amet ipsum dolar sit amet
-							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-							ipsum dolar. 						
-							
-						</p>
+						<h2><?php echo $page_row['title'];?></h2>
 						
-						<p>
-							Lorem ipsum dolar sit amet ipsum dolar sit amet
-							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-							ipsum dolar. Ipsum dolar sit amet ipsum.						
-							
-						</p>
+						<div>
+							<?php echo $page_row['content'];?>
+							<br/><br/>	
+						</div>
+						
 						
 						<div class="content_box bg_red">						
 							<p>

@@ -3,6 +3,7 @@
 include_once "config.php";
 
 ?>
+
 <html>
 	<head>	
 		<title><?php echo $setting['site_name'];?></title>
@@ -41,24 +42,26 @@ include_once "config.php";
 				</div> <!-- left_sidebar end -->
 				
 				<div id="content_area">
+				 
 				
-						<h2>About US</h2>
+						<?php				
+						$id = $_GET['news_id'];
+						//3. Performing SQL query
+						$news_query = "SELECT * FROM news where `id` = $id";
+						$news_result = mysql_query($news_query); //resource or similar to file handle
+						$news_row = mysql_fetch_assoc($news_result);
+						?>
+
+						<h2><?php echo $news_row['title'];?></h2>
 						
-						<p>
-							About us lorem ipsum dolar sit amet ipsum dolar sit amet
-							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-							ipsum dolar. Ipsum dolar sit amet ipsum. Lorem ipsum dolar sit amet ipsum dolar sit amet
-							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-							ipsum dolar. 						
+						<div>
+							<?php echo $news_row['content'];?>
 							
-						</p>
+							<br/><br/>Posted On:
+							<?php echo date("Y/m/d", $news_row['created_at']);?>
+								
+						</div>					
 						
-						<p>
-							Lorem ipsum dolar sit amet ipsum dolar sit amet
-							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-							ipsum dolar. Ipsum dolar sit amet ipsum.						
-							
-						</p>
 					
 				
 				</div> <!-- content_are end -->

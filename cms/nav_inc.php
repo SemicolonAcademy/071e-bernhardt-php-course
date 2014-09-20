@@ -1,4 +1,7 @@
-<a href="index.php">Home</a>
-<a href="about.php">About</a>
-<a href="services.php">Services</a>	
-<a href="contact.php">Contact Us</a>			
+<?php while ($menu_row = mysql_fetch_assoc($menus_result)) { ?>
+
+<a href="<?php echo $menu_row['href'];?>">
+	<?php echo $menu_row['name'];?>
+</a>
+
+<?php } ?>

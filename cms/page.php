@@ -3,6 +3,7 @@
 include_once "config.php";
 
 ?>
+
 <html>
 	<head>	
 		<title><?php echo $setting['site_name'];?></title>
@@ -41,24 +42,26 @@ include_once "config.php";
 				</div> <!-- left_sidebar end -->
 				
 				<div id="content_area">
+				 
 				
-						<h2>About US</h2>
+						<?php				
+						$id = $_GET['page_id'];
+						//3. Performing SQL query
+						$page_query = "SELECT * FROM pages where `id` = $id";
+						$page_result = mysql_query($page_query); //resource or similar to file handle
+						$page_row = mysql_fetch_assoc($page_result);
+						?>
+
+						<h2><?php echo $page_row['title'];?></h2>
 						
-						<p>
-							About us lorem ipsum dolar sit amet ipsum dolar sit amet
-							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-							ipsum dolar. Ipsum dolar sit amet ipsum. Lorem ipsum dolar sit amet ipsum dolar sit amet
-							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-							ipsum dolar. 						
+						<div>
+							<?php echo $page_row['content'];?>
 							
-						</p>
+							<br/><br/>Posted On:
+							<?php echo date("Y/m/d", $page_row['created_at']);?>
+								
+						</div>					
 						
-						<p>
-							Lorem ipsum dolar sit amet ipsum dolar sit amet
-							ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-							ipsum dolar. Ipsum dolar sit amet ipsum.						
-							
-						</p>
 					
 				
 				</div> <!-- content_are end -->
