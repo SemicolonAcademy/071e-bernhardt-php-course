@@ -13,7 +13,7 @@ mysql_connect('localhost', 'root', '');
 mysql_select_db('bernhardt');
 
 //3. Performing SQL query
-$query = "SELECT * FROM menus";
+$query = "SELECT * FROM menus order by `order` ASC";
 $result = mysql_query($query); //resource or similar to file handle
 
 ?>
