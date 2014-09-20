@@ -1,49 +1,58 @@
 <?php 
-		//error_reporting(0);
-		
-		/*echo "<pre>";
-		print_r($_POST);
-		echo "</pre>"; */
-		
-		if ($_POST['btn_action'] == "login"){
-			
-			$email = $_POST['email'];			
-			$pass = $_POST['password'];			
-			
-			if ($email !="" && $pass !="") {
-			
-				$p = md5($pass);
-				
-				mysql_connect('localhost', 'root', '');    
-				mysql_select_db('bernhardt');
+session_start();	
 
-				$query = "SELECT * FROM users WHERE 
-				`email` = '$email' AND `password` = '$p' 
-				AND `status` = 'active' LIMIT 1";
-				$result = mysql_query($query) or die(mysql_error()); 
-				
-				//!empty($result) &&
-				
-				if ( mysql_num_rows($result) > 0) {
-					
-					$user = mysql_fetch_assoc($result);					
-					echo $msg_success = "Login successfull";
-					//header("location: dashboard.php")
-					
-				}else {
-				
-					echo $msg_error = "Invalid login";
-				}
+if ($_SESSION['id'] != ""){
+	header("location: dashboard.php");
+}
+		
+//error_reporting(0);
+
+/*echo "<pre>";
+print_r($_POST);
+echo "</pre>"; */
+		
+	if ($_POST['btn_action'] == "login"){
+		
+		$email = $_POST['email'];			
+		$pass = $_POST['password'];			
+		
+		if ($email !="" && $pass !="") {
+		
+			$p = md5($pass);
 			
+			mysql_connect('localhost', 'root', '');    
+			mysql_select_db('bernhardt');
+
+			$query = "SELECT * FROM users WHERE 
+			`email` = '$email' AND `password` = '$p' 
+			AND `status` = 'active' LIMIT 1";
+			$result = mysql_query($query) or die(mysql_error()); 
+			
+			//!empty($result) &&
+			
+			if ( mysql_num_rows($result) > 0) {
+				
+				$user = mysql_fetch_assoc($result);					
+				//$msg_success = "Login successfull";
+				
+				$_SESSION['id'] = $user['id'];
+				$_SESSION['email'] = $user['email'];					
+				header("location: dashboard.php");
+				
 			}else {
 			
-				echo $msg_error = "Username or password not provided";			
+				$msg_error = "Invalid login";
 			}
-
 		
+		}else {
+		
+			$msg_error = "Username or password not provided";			
 		}
+
+	
+	}
 		
-		?>
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

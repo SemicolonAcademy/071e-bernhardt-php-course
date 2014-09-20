@@ -1,5 +1,10 @@
 <?php
 
+session_start();
+if ($_SESSION['id'] == ""){
+	header("location: index.php");
+}
+
 mysql_connect('localhost', 'root', '');    
 mysql_select_db('bernhardt');
 

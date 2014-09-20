@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+if ($_SESSION['id'] == ""){
+	header("location: index.php");
+}
+				
+				
 //1. Connecti to MySQL server
 mysql_connect('localhost', 'root', '');    
 
@@ -29,6 +35,43 @@ $result = mysql_query($query); //resource or similar to file handle
 		bottom of the topbar */
       }
     </style>
+	
+	
+	<script type="text/javascript">
+	
+	function delete_user(){
+		
+		if(confirm("Are you sure to delete ?")) {
+			
+			return true;
+			
+		}else {
+		
+			return false;
+			
+		}
+	}
+	
+	function validateForm() {
+		
+		var email = document.forms["userForm"]["email"].value;
+		
+		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			
+		if (email == null || email == "" ) {
+			alert("Email must be filled out");
+			return false;
+		}
+		
+		if (re.test(email)) {
+			alert("Email must be valid email address.");
+			return false;
+		}
+		
+		return true;
+	}	
+	
+	</script>
     
   </head>
 
@@ -78,13 +121,18 @@ while ($row = mysql_fetch_assoc($result)) { ?>
 				<?php } ;?>
 			</td>
 			
-			
 			<td><?php echo date("Y/m/d", $row['created_at']);?></td>
 			
 			<td>
 				<a href="user_edit.php?id=<?php echo $row['id']; ?>">Edit</a>
 				/ 
-				<a href="db.php?action=user_delete&id=<?php echo $row['id']; ?>">Delete</a>
+				
+					<a onClick="javascript:return delete_user()" 
+					href="db.php?action=user_delete&id=<?php echo $row['id']; ?>">
+						Delete
+					</a>
+				
+				
 			</td>
 		</tr>	
 
@@ -98,7 +146,7 @@ while ($row = mysql_fetch_assoc($result)) { ?>
 	
 	<h4>Add User</h4><br/>
 	
-	<form method="POST" action="db.php">
+	<form name="userForm" onsubmit="return validateForm()" method="POST" action="db.php" >
             
 			<div class="control-group">
               <label class="control-label" >Email</label>
