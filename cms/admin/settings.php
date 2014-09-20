@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+if ($_SESSION['id'] == ""){
+	header("location: index.php");
+}
+
+
 //1. Connecti to MySQL server
 mysql_connect('localhost', 'root', '');    
 

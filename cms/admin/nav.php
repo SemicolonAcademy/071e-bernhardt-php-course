@@ -17,6 +17,12 @@
               <li <?php if ($filename=="pages.php") echo "class='active'";?>><a href="pages.php">Pages</a></li>
               <li <?php if ($filename=="menus.php") echo "class='active'";?>><a href="menus.php">Menus</a></li>
               <li <?php if ($filename=="settings.php") echo "class='active'";?>><a href="settings.php">Settings</a></li>
+              <li>
+				<a href="logout.php">
+					<?php echo $_SESSION['email'];?>
+					Logout
+				</a>
+			</li>
             </ul>
           </div>
 		  
