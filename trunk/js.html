@@ -1,0 +1,61 @@
+<html>
+
+	<head>
+		<title>
+			Bernhardt PHP
+		</title>
+		
+		<style type="text/css">
+		
+			.red{
+				width:200px;
+				height:200px;
+				background:#900;
+				
+			}
+			
+		</style>
+		
+		<script type="text/javascript" src="jquery.js"></script>
+		
+		<script type="text/javascript">
+		
+			$(document).ready(function(){
+			
+			
+				$("#link").click(function(){
+					
+					//alert("hello how are yo ?");
+					
+					//$(".red").animate({left:"250px"}, 1500);
+					
+					$(".red").animate({
+						width: "70%",
+						opacity: 0.4												
+					}, 1500 ).fadeOut("slow");
+					
+					//$(".red").fadeOut("fast");
+					
+					//$(".red").fadeIn("slow");
+					
+					return false;
+				});
+			
+			});
+			
+		</script>
+		
+		
+	</head>
+
+	<body>
+		
+		<a id="link" href="#"> Click Me</a>
+		<br/><br/>
+		
+		<div class="red"></div>
+		
+	</body>
+	
+</html>
+

@@ -65,27 +65,41 @@ include_once "config.php";
 						
 						<div class="content_box bg_red">						
 							<p>
-								Lorem ipsum dolar sit amet ipsum dolar sit amet
-								ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-								ipsum dolar. Ipsum dolar sit amet ipsum.						
+								
+								<?php	$id = 5;
+								//3. Performing SQL query
+								$red_query = "SELECT * FROM pages where `id` = $id";
+								$red_result = mysql_query($red_query); //resource or similar to file handle
+								$red_row = mysql_fetch_assoc($red_result);
+								echo $red_row['content'];
+								?>								
 								
 							</p>
 						</div>
 						
 						<div class="content_box bg_green">						
 							<p>
-								Lorem ipsum dolar sit amet ipsum dolar sit amet
-								ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-								ipsum dolar. Ipsum dolar sit amet ipsum.						
+								<?php	$id = 6;
+								//3. Performing SQL query
+								$green_query = "SELECT * FROM pages where `id` = $id";
+								$green_result = mysql_query($green_query);
+								$green_row = mysql_fetch_assoc($green_result);
+								echo $green_row['content'];
+								?>							
 								
 							</p>
 						</div>
 						
 						<div class="content_box bg_blue">						
 							<p>
-								Lorem ipsum dolar sit amet ipsum dolar sit amet
-								ipsum dolar sit amet ipsum dolar sit amet Lorem ipsum dolar sit amet 
-								ipsum dolar. Ipsum dolar sit amet ipsum.						
+								<?php	
+								
+								$blue_row = mysql_fetch_assoc(
+								
+										mysql_query("SELECT * FROM pages where id = 8")
+									);
+								echo $blue_row['content'];
+								?>							
 								
 							</p>
 						</div>

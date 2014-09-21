@@ -25,6 +25,9 @@ $result = mysql_query($query); //resource or similar to file handle
     <title>CMS Backend</title>
     
 	<link href="assets/css/bootstrap.css" rel="stylesheet">
+	
+	<script src="http://localhost/bernhardt/cms/ckeditor/ckeditor.js"></script>
+		
     
 	<style>
       body {
@@ -61,6 +64,7 @@ $result = mysql_query($query); //resource or similar to file handle
 			<th>Title</th>
 			<th>Content</th>			
 			<th>Created At</th>			
+			<th>Page Id</th>			
 			<th>Action</th>
 		</tr>
 		
@@ -78,6 +82,7 @@ while ($row = mysql_fetch_assoc($result)) { ?>
 			
 			
 			<td><?php echo date("Y/m/d", $row['created_at']);?></td>
+			<td><?php echo $row['id'];?></td>
 			
 			<td>
 				<a href="pages_edit.php?id=<?php echo $row['id']; ?>">Edit</a>
@@ -110,7 +115,7 @@ while ($row = mysql_fetch_assoc($result)) { ?>
             <div class="control-group">
               <label class="control-label" >Content</label>
               <div class="controls">
-                <textarea name="content" rows="10" class="span6"></textarea>
+                <textarea class="ckeditor" name="content" rows="10" class="span6"></textarea>
               </div>
             </div>
             

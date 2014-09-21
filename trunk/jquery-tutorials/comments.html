@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Imitate the WordPress Comment Management</title>
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.color.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$(".feed:even").addClass("alt");
+
+	$(".feed .btn-reply").click(function(){
+		alert("Send Reply?");
+		
+		$(this).parents(".feed").animate({ backgroundColor: "#fbc7c7" }, "fast")
+		.animate({ opacity: "hide" }, "slow")
+		return false;
+	});
+
+	$(".feed .btn-unapprove").click(function(){
+		$(this).parents(".feed").animate({ backgroundColor: "#fff568" }, "fast")
+		.animate({ backgroundColor: "#ffffff" }, "slow")
+		.addClass("spam")
+		return false;
+	});
+
+	$(".feed .btn-approve").click(function(){
+		$(this).parents(".feed").animate({ backgroundColor: "#dafda5" }, "fast")
+		.animate({ backgroundColor: "#ffffff" }, "slow")
+		.removeClass("spam")
+		return false;
+	});
+
+	$(".feed .btn-spam").click(function(){		
+		$(this).parents(".feed").animate({ backgroundColor: "#fbc7c7" }, "fast")
+		.animate({ opacity: "hide" }, "slow")
+		return false;
+	});
+
+});
+</script>
+
+
+<style type="text/css">
+body {
+	margin: 10px auto;
+	width: 470px;
+}
+a, a:visited {
+	color: #999;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration:underline;
+	color: #000;
+}
+h3 {
+	margin: 0;
+	padding: 0 0 .1em;
+	font-size:1em;	
+}
+p {
+	margin: 0;
+	padding: 0 0 0.05em;
+}
+.dateStamp{
+color:#666;
+font-size:11px;
+padding: 0 0.08em 0 0.08em;
+}
+
+.feedPic{
+float:left;
+height:48px;
+width:48px;
+padding:10px 5px 10px 5px;
+
+}
+
+.feed {
+	background: #ffffff;	
+	padding: 5px;
+	position: relative;
+	border-top: solid 1px #ccc;
+}
+.alt {
+	background: #f5f4f4;
+}
+.spam {
+	color: #999999;
+}
+
+.btn-down, .btn-up{
+padding:0 4px 0 4px;
+}
+
+</style>
+</head>
+
+<body>
+<div id="feedBar">
+<div class="feed">
+	<div class="feedPic"> <img src="images/thumb.jpg" width="40" height="40" /></div>
+	<h3>bhu1st</h3>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+	<p class="dateStamp"><a href="#">2 minute ago</a><a href="#" class="btn-up" title="I Like!"><img src="images/up.png">2 Like!</a> - <a href="#" class="btn-down" title="I don't Like!"><img src="images/down.png">1 Dislike!</a> - <a href="#" class="btn-reply" title="Reply to @user!">Reply</a> - <a href="#" class="btn-unapprove" title="Send Private Message">Message</a> - <a href="#" class="btn-spam" title="Delete Msg?">Del</a></p>
+	
+</div>
+<div class="feed spam">
+	<div class="feedPic"> <img src="images/thumb.jpg" width="40" height="40" /></div>
+	<h3>sovi</h3>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+    <p class="dateStamp"><a href="#">2 minute ago</a><a href="#" class="btn-up" title="I Like!"><img src="images/up.png">2 Like!</a> - <a href="#" class="btn-down" title="I don't Like!"><img src="images/down.png">1 Dislike!</a> - <a href="#" class="btn-reply" title="Reply to @user!">Reply</a> - <a href="#" class="btn-unapprove" title="Send Private Message">Message</a> - <a href="#" class="btn-spam" title="Delete Msg?">Del</a></p>	
+
+</div>
+<div class="feed">
+	<div class="feedPic"> <img src="images/thumb.jpg" width="40" height="40" /></div>
+	<h3>kala</h3>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+	<p class="dateStamp"><a href="#">2 minute ago</a><a href="#" class="btn-up" title="I Like!"><img src="images/up.png">2 Like!</a> - <a href="#" class="btn-down" title="I don't Like!"><img src="images/down.png">1 Dislike!</a> - <a href="#" class="btn-reply" title="Reply to @user!">Reply</a> - <a href="#" class="btn-unapprove" title="Send Private Message">Message</a> - <a href="#" class="btn-spam" title="Delete Msg?">Del</a></p>
+</div>
+<div class="feed">
+	<div class="feedPic"> <img src="images/thumb.jpg" width="40" height="40" /></div>
+	<h3>sups</h3>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+	<p class="dateStamp"><a href="#">2 minute ago</a><a href="#" class="btn-up" title="I Like!"><img src="images/up.png">2 Like!</a> - <a href="#" class="btn-down" title="I don't Like!"><img src="images/down.png">1 Dislike!</a> - <a href="#" class="btn-reply" title="Reply to @user!">Reply</a> - <a href="#" class="btn-unapprove" title="Send Private Message">Message</a> - <a href="#" class="btn-spam" title="Delete Msg?">Del</a></p>
+</div>
+<div class="feed">
+	<div class="feedPic"> <img src="images/thumb.jpg" width="40" height="40" /></div>
+	<h3>tankx</h3>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+	<p class="dateStamp"><a href="#">2 minute ago</a><a href="#" class="btn-up" title="I Like!"><img src="images/up.png">2 Like!</a> - <a href="#" class="btn-down" title="I don't Like!"><img src="images/down.png">1 Dislike!</a> - <a href="#" class="btn-reply" title="Reply to @user!">Reply</a> - <a href="#" class="btn-unapprove" title="Send Private Message">Message</a> - <a href="#" class="btn-spam" title="Delete Msg?">Del</a></p>
+</div>
+<div class="feed spam">
+	<div class="feedPic"> <img src="images/thumb.jpg" width="40" height="40" /></div>
+	<h3>nawe</h3>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+	<p class="dateStamp"><a href="#">2 minute ago</a><a href="#" class="btn-up" title="I Like!"><img src="images/up.png">2 Like!</a> - <a href="#" class="btn-down" title="I don't Like!"><img src="images/down.png">1 Dislike!</a> - <a href="#" class="btn-reply" title="Reply to @user!">Reply</a> - <a href="#" class="btn-unapprove" title="Send Private Message">Message</a> - <a href="#" class="btn-spam" title="Delete Msg?">Del</a></p>
+</div>
+<div class="feed">
+	<div class="feedPic"> <img src="images/thumb.jpg" width="40" height="40" /></div>
+	<h3>hari</h3>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
+	<p class="dateStamp"><a href="#">2 minute ago</a><a href="#" class="btn-up" title="I Like!"><img src="images/up.png">2 Like!</a> - <a href="#" class="btn-down" title="I don't Like!"><img src="images/down.png">1 Dislike!</a> - <a href="#" class="btn-reply" title="Reply to @user!">Reply</a> - <a href="#" class="btn-unapprove" title="Send Private Message">Message</a> - <a href="#" class="btn-spam" title="Delete Msg?">Del</a></p>
+</div>
+</div><!--end of FeedBar Div -->
+
+</body>
+</html>
