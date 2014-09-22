@@ -36,7 +36,40 @@ $result = mysql_query($query); //resource or similar to file handle
       }
     </style>
     
-  </head>
+<script src="assets/js/jquery.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	$(".btn_delete_news").click(function(){
+	
+		var btn = $(this);
+		//var id = $(this).data("id");
+		var href = $(this).attr("href");
+		
+		$.ajax({
+			type: "GET",
+			url: href,
+			
+		}).done(function( msg ) {
+			if (msg == 1) {
+				btn.closest("tr").fadeOut("slow");		
+			}else {			
+				alert("Couldn't delete");
+			}
+		
+		});
+		
+		return false;
+		
+	});
+	
+});
+
+</script>
+
+</head>
 
   <body>
 
@@ -83,7 +116,10 @@ while ($row = mysql_fetch_assoc($result)) { ?>
 			<td>
 				<a href="news_edit.php?id=<?php echo $row['id']; ?>">Edit</a>
 				/ 
-				<a href="db.php?action=news_delete&id=<?php echo $row['id']; ?>">Delete</a>
+				<a class="btn_delete_news" 
+				data-id="<?php echo $row['id']; ?>" 				
+				href="db.php?action=news_delete&id=<?php echo $row['id']; ?>">Delete
+				</a>
 			</td>
 		</tr>	
 
