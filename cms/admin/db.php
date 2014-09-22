@@ -84,12 +84,15 @@ $id= $_GET['id'];
 //DELETE USER
 if($action== "news_delete" && $id!='')
 {
-	//3. Performing SQL query
 	$query = "DELETE FROM news WHERE id =$id";
 	mysql_query($query); //resource or similar to file handle
 	
-	//header function to redirect to dashboard.php
-	header("location: news.php");
+	if (mysql_affected_rows() > 0){
+		echo 1;
+	}else {
+		echo 0;
+	}
+	
 }
 
 //echo "<pre>";
@@ -291,10 +294,6 @@ if ($btn_action == "update_settings")	{
 		header("location: settings.php");
 	}
 }
-
-
-
-
 ?>
 
 
