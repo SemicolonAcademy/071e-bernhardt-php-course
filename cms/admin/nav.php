@@ -16,6 +16,7 @@
               <li <?php if ($filename=="news.php") echo "class='active'";?>><a href="news.php">News</a></li>
               <li <?php if ($filename=="pages.php") echo "class='active'";?>><a href="pages.php">Pages</a></li>
               <li <?php if ($filename=="menus.php") echo "class='active'";?>><a href="menus.php">Menus</a></li>
+              <li <?php if ($filename=="gallery.php") echo "class='active'";?>><a href="gallery.php">Gallery</a></li>
               <li <?php if ($filename=="settings.php") echo "class='active'";?>><a href="settings.php">Settings</a></li>
               <li>
 				<a href="logout.php">
